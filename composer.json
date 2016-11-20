@@ -1,0 +1,15 @@
+{
+    "require": {
+        "propel/propel": "~2.0@dev",
+        "fzaninotto/faker": "^1.6",
+        "xpdo/xpdo": "^3.0@dev"
+    },
+    "autoload": { 
+        "classmap": [
+            "generated-classes/"
+        ],
+        "psr-4": {
+            "bookstore\\": "xpdo/model/bookstore"
+        }
+    }
+}
