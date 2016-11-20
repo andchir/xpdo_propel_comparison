@@ -10,6 +10,7 @@ class Publisher extends \bookstore\Publisher
         'package' => 'bookstore',
         'version' => '1.1',
         'table' => 'publisher',
+        'precision' => '11',
         'extends' => 'xPDO\\Om\\xPDOSimpleObject',
         'fields' => 
         array (
@@ -23,8 +24,8 @@ class Publisher extends \bookstore\Publisher
                 'dbtype' => 'integer',
                 'phptype' => 'integer',
                 'required' => 'true',
-                'primaryKey' => 'true',
-                'autoIncrement' => 'true',
+                'index' => 'pk',
+                'generated' => 'native',
             ),
             'name' => 
             array (
@@ -38,7 +39,7 @@ class Publisher extends \bookstore\Publisher
         array (
             'Books' => 
             array (
-                'class' => 'Books',
+                'class' => 'bookstore\\Books',
                 'local' => 'id',
                 'foreign' => 'publisher_id',
                 'cardinality' => 'one',

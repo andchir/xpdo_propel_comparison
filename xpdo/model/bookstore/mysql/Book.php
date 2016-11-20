@@ -26,10 +26,11 @@ class Book extends \bookstore\Book
             'id' => 
             array (
                 'dbtype' => 'integer',
+                'precision' => '11',
                 'phptype' => 'integer',
                 'required' => 'true',
-                'primaryKey' => 'true',
-                'autoIncrement' => 'true',
+                'index' => 'pk',
+                'generated' => 'native',
             ),
             'title' => 
             array (
@@ -77,7 +78,7 @@ class Book extends \bookstore\Book
         array (
             'Author' => 
             array (
-                'class' => 'Author',
+                'class' => 'bookstore\\Author',
                 'local' => 'author_id',
                 'foreign' => 'id',
                 'cardinality' => 'one',
@@ -85,7 +86,7 @@ class Book extends \bookstore\Book
             ),
             'Publisher' => 
             array (
-                'class' => 'Publisher',
+                'class' => 'bookstore\\Publisher',
                 'local' => 'publisher_id',
                 'foreign' => 'id',
                 'cardinality' => 'one',

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model package="bookstore" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="bookstore" phpdoc-subpackage="model" version="1.1">
     <object class="Book" table="book" extends="xPDO\Om\xPDOSimpleObject">
-        <field key="id" dbtype="integer" phptype="integer" required="true" primaryKey="true" autoIncrement="true"/>
-        <field key="title" dbtype="varchar" phptype="string" size="255" required="true" />
+        <field key="id" dbtype="integer" precision="11" phptype="integer" required="true" index="pk"  generated="native"/>
+        <field key="title" dbtype="varchar" phptype="string" size="255" required="true"/>
         <field key="isbn" dbtype="varchar" phptype="string" size="24" required="true" phpName="ISBN"/>
         <field key="pub_date" dbtype="integer" phptype="integer" size="20" required="true"/>
         <field key="price" dbtype="integer" phptype="integer" size="20" required="true"/>
         <field key="publisher_id" dbtype="integer" phptype="integer" required="true"/>
         <field key="author_id" dbtype="integer" phptype="integer" required="true"/>
-        <composite alias="Author" class="Author" local="author_id" foreign="id" cardinality="one" owner="local" />
-        <composite alias="Publisher" class="Publisher" local="publisher_id" foreign="id" cardinality="one" owner="local" />
+        <composite alias="Author" class="bookstore\Author" local="author_id" foreign="id" cardinality="one" owner="local"/>
+        <composite alias="Publisher" class="bookstore\Publisher" local="publisher_id" foreign="id" cardinality="one" owner="local"/>
     </object>
     <object class="Author" table="author" extends="xPDO\Om\xPDOSimpleObject">
-        <field key="id" dbtype="integer" phptype="integer" required="true" primaryKey="true" autoIncrement="true"/>
+        <field key="id" dbtype="integer" precision="11" phptype="integer" required="true" index="pk"  generated="native"/>
         <field key="first_name" dbtype="varchar" phptype="string" size="128" required="true"/>
         <field key="last_name" dbtype="varchar" phptype="string" size="128" required="true"/>
-        <aggregate alias="Books" class="Books" local="id" foreign="author_id" cardinality="one" owner="foreign" />
+        <aggregate alias="Books" class="bookstore\Books" local="id" foreign="author_id" cardinality="one" owner="foreign"/>
     </object>
-    <object class="Publisher" table="publisher" extends="xPDO\Om\xPDOSimpleObject">
-        <field key="id" dbtype="integer" phptype="integer" required="true" primaryKey="true" autoIncrement="true" />
-        <field key="name" dbtype="varchar" phptype="string" size="128" required="true" />
-        <aggregate alias="Books" class="Books" local="id" foreign="publisher_id" cardinality="one" owner="foreign" />
+    <object class="Publisher" table="publisher" precision="11" extends="xPDO\Om\xPDOSimpleObject">
+        <field key="id" dbtype="integer" phptype="integer" required="true" index="pk"  generated="native"/>
+        <field key="name" dbtype="varchar" phptype="string" size="128" required="true"/>
+        <aggregate alias="Books" class="bookstore\Books" local="id" foreign="publisher_id" cardinality="one" owner="foreign"/>
     </object>
 </model>

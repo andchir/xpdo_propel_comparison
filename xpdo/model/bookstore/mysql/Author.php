@@ -22,10 +22,11 @@ class Author extends \bookstore\Author
             'id' => 
             array (
                 'dbtype' => 'integer',
+                'precision' => '11',
                 'phptype' => 'integer',
                 'required' => 'true',
-                'primaryKey' => 'true',
-                'autoIncrement' => 'true',
+                'index' => 'pk',
+                'generated' => 'native',
             ),
             'first_name' => 
             array (
@@ -46,7 +47,7 @@ class Author extends \bookstore\Author
         array (
             'Books' => 
             array (
-                'class' => 'Books',
+                'class' => 'bookstore\\Books',
                 'local' => 'id',
                 'foreign' => 'author_id',
                 'cardinality' => 'one',

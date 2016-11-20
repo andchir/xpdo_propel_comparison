@@ -37,4 +37,4 @@ $schema = __DIR__ . '/schema/schema.xml';
 $target = __DIR__ . '/model/';
 $generator->parseSchema($schema, $target);
 
-
+echo '<br>Completed.';
